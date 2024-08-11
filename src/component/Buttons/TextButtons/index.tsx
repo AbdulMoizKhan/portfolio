@@ -23,7 +23,7 @@ const TextButton = ({
         <Link to={redirectLink} style={{ textDecoration: 'none' }}>
           <Typography
             sx={{
-              color: color || "#fff",
+              color: color || "#000",
               fontSize: "16px",
               fontWeight: 500,
               cursor: "pointer",

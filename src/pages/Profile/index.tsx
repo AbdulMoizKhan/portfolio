@@ -56,10 +56,12 @@ const educationData = [
 
 const Profile = () => {
     return (
-        <Container sx={{ maxWidth: '1400px !important', paddingTop: '200px' }}>
-            <Stack direction={"column"} >
+        <Container sx={{ maxWidth: '1400px !important'}}>
+            <Stack direction={"column"} sx={{
+
+            }}>
+                <Stack direction={"column"} sx={{ height: '100vh' }} justifyContent={'center'} >
                 <Typography variant="h2" align="center" className="c-black">Creativity Powers Progress</Typography>
-                <Stack direction={"column"}>
                     <img src="" alt="" />
                     <Stack>
                         <Typography variant="h3" className="c-black">Biography</Typography>

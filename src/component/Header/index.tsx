@@ -32,7 +32,6 @@ const wrapper: SxProps = {
     // zIndex: 1000,
     // position: "relative",
     width: "100%",
-
 };
 
 const btnWrapper: SxProps = {
@@ -57,12 +56,14 @@ const drawerBtn: SxProps = {
     },
     color: "white",
 };
+
 const drawerItems: SxProps = {
     // borderBottom: "1px solid #4b4040",
     padding: "15px 20px",
     display: "block",
     textAlign: "center",
 };
+
 // const closeBtn = (variant: string | null | undefined): SxProps => {
 //   return {
 //     color: variant === "light" ? "text.primary" : "text.secondary",
@@ -106,13 +107,12 @@ const Header = () => {
                         alignItems={"center"}
                         spacing={5}
                         sx={navbarWrap}
-
                     >
                         {TextLinks?.map((text) => {
                             return (
                                 <TextButton
                                     title={text.title}
-                                    hoverColor={"tomato"}
+                                    // hoverColor={"tomato"}
                                     redirectLink={text.id}
                                     key={text.title}
                                 />
