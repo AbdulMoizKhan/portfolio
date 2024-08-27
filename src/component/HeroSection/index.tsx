@@ -37,12 +37,12 @@ const HeroSection = () => {
             deployment, I am committed to delivering high-quality code and exceptional user experiences.
             Let's bring your vision to life with innovative and effective web solutions, designed to drive engagement and success.</Typography>
           <Stack direction={'row'} gap={2}>
-            <Button className='button' sx={{ backgroundColor: 'rgb(5, 31, 78) !important' }} endIcon={<KeyboardArrowRightIcon />} >I need a Website</Button>
+            <Button className='button-primary' endIcon={<KeyboardArrowRightIcon />} >I need a Website</Button>
             <Button
-              className='button'
+              className='button-primary'
               sx={{
                 backgroundColor: hovered ? 'white !important'  : 'rgb(5, 31, 78)',
-                color: hovered ? 'rgb(5, 31, 78) !important' : 'white',
+                color: 'white',
                 transition: 'all 0.6s ease',}}
               endIcon={hovered === false ? <ArrowCircleRightIcon /> : <ArrowCircleLeftIcon />}
               onMouseEnter={() => setHovered(true)}

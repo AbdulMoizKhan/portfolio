@@ -4,6 +4,7 @@ $secondary-color: #ff4081;
 $font-family: 'Roboto', sans-serif;
 $black-color: #000;
 $white-color: #fff;
+$primary-theme: linear-gradient(90deg, rgba(60.76, 143.20, 194.44, 0.95) 0%, rgba(31.98, 48.95, 59.50, 0.95) 60%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
 
 // Mixins
 @mixin flex-center {
@@ -12,6 +13,20 @@ $white-color: #fff;
   align-items: center;
 }
 
+@mixin color-theme {
+  background: linear-gradient(90deg, rgba(60.76, 143.20, 194.44, 0.95) 0%, rgba(31.98, 48.95, 59.50, 0.95) 60%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin gradient-border($border-width: 2px) {
+  border: $border-width solid transparent;
+  border-image: linear-gradient(90deg, rgba(60.76, 143.20, 194.44, 0.95) 0%, rgba(31.98, 48.95, 59.50, 0.95) 60%) 1;
+  border-radius: 20px; /* Adjust as necessary */
+}
 // Global Styles
 * {
   margin: 0;
@@ -22,6 +37,11 @@ $white-color: #fff;
 body {
   font-family: $font-family;
   background-color: rgb(255, 255, 255);
+}
+
+.cards{
+  background: linear-gradient(15deg, rgba(61, 143, 194, 0.81) 0%, rgb(32 49 90 / 98%) 60%);
+
 }
 .swiper-wrapper {
   height: 350px !important;
@@ -37,22 +57,42 @@ body {
   margin-top: 20px !important;
 }
 
+// .swiper-slide-active .cards {
+//   @include gradient-border;
+//   // border: 1px #F76680 solid;
+// }
 .swiper-slide-active .cards {
-  border: 1px #F76680 solid;
+  position: relative;
+  padding: 4px; /* Adjust the padding to create space for the border */
+  background: linear-gradient(15deg, rgba(61, 143, 194, 0.81) 0%, rgb(32 49 90 / 98%) 60%);
+  border-radius: 20px; /* Adjust as needed */
+}
+
+.swiper-slide-active .cards::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: white; /* Adjust this to match the background of your card */
+  border-radius: 6px; /* Subtract the padding from the border-radius */
+  z-index: -1; /* Ensure the background is behind the content */
 }
 
 .swiper-slide-active .cards .cardhead {
-  color: #F76680 !important;
+  color: #0178f2  !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: linear-gradient(225deg, #F76680 0%, #57007B 100%) !important;
+  background: linear-gradient(15deg, rgba(61, 143, 194, 0.81) 0%, rgb(32 49 90 / 98%) 60%);
 }
 
 .swiper-pagination-bullet {
   height: 15px !important;
   width: 15px !important;
 }
+
 // Utility Classes
 .flex-center {
   @include flex-center;
@@ -125,27 +165,56 @@ body {
 }
 
 
-.hero{
-  Button{
+.hero {
+  Button {
     color: white;
   }
 }
 
-.button{
-  padding:12px 30px !important;
+.button {
+  padding: 12px 30px !important;
 }
 
-.button-primary{
-  background-color: #FC0E49 !important;
-  &:hover{
+.button-primary {
+  background: linear-gradient(90deg, #5B95C3 0%, #2C475D 73%) !important;
+  padding: 15px 30px !important;
+  border-radius: 30px !important;
+
+  &:hover {
     background-color: darken(#FC0E49, 10%) !important;
   }
 }
 
-.c-black{
-  color:$black-color !important;
+.c-black {
+  color: $black-color !important;
 }
 
-.c-white{
+.c-white {
   color: $white-color !important;
+}
+
+.c-theme-color{
+ @include color-theme();
+}
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.navbar_main {
+  span {
+    &:hover {
+      text-decoration: underline !important;
+      text-decoration-thickness: 3px !important;
+      text-underline-offset: 5px !important;
+    }
+  }
 }

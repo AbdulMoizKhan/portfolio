@@ -7,23 +7,23 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import { Stack, Typography } from '@mui/material';
 
 interface TimelineData {
-    title: string;
-    date: string;
-    description: string[];
-    techUsed: string[];
+    title?: string;
+    date?: string;
+    description?: string[];
+    techUsed?: string[];
 }
 
 interface AlternateTimelineProps {
-    timelineData: TimelineData[] ;
+    timelineData?: TimelineData[] ;
 }
 export default function AlternateTimeline({ timelineData }: AlternateTimelineProps) {
     return (
         <Timeline position="alternate">
-            {timelineData.map((item, index) => (
+            {timelineData?.map((item, index) => (
                 <TimelineItem key={index}>
                     <TimelineSeparator>
                         <TimelineDot />
-                        {index < timelineData.length - 1 && <TimelineConnector />}
+                        {index < timelineData?.length - 1 && <TimelineConnector />}
                     </TimelineSeparator>
                     <TimelineContent>
                         <Typography variant="h6" component="span">
@@ -34,11 +34,11 @@ export default function AlternateTimeline({ timelineData }: AlternateTimelinePro
                             <Typography variant="subtitle2" component="span">Technologies Used:</Typography>
                             {item.techUsed.map((tech, i) => (
                                 <Typography key={i} variant="body2" component="span">
-                                    {tech}{i < item.techUsed.length - 1 ? ',' : ''}
+                                    {tech}{i < item?.techUsed.length - 1 ? ',' : ''}
                                 </Typography>
                             ))}
                         </Stack>}
-                        {item.description.map((desc, i) => (
+                        {item?.description.map((desc, i) => (
                             <Typography key={i} variant="body2">
                                 {`- ${desc}`}
                             </Typography>

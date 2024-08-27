@@ -86,9 +86,10 @@ const Services = () => {
         <Typography variant={"h2"} align="center">My Services</Typography>
         <Typography variant="body2" align="center"> I offer full-stack development, ML/AI, DevOps, SQA, and technical writing.
           Specializing in React, Next.js, & Python I deliver scalable, efficient solutions for websites, apps, and backend systems.</Typography>
+      </Stack>
         <Swiper
           centeredSlides={true}
-          autoplay={{ delay: 3000 }}
+          // autoplay={{ delay: 3000 }}
           pagination={{
             clickable: true,
           }}
@@ -128,7 +129,6 @@ const Services = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </Stack>
     </Container>
   )
 }

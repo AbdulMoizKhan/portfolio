@@ -1,6 +1,7 @@
-import { Container, Divider, Stack, Typography } from "@mui/material";
+import { Box, Container, Divider, Grid, Stack, Typography } from "@mui/material";
 import AlternateTimeline from "../../component/Timeline";
-
+import { useInView } from 'react-intersection-observer';
+import profile from "../../assets/moiz 1.svg";
 // Define timeline data
 const experienceData = [
     {
@@ -55,35 +56,66 @@ const educationData = [
 ];
 
 const Profile = () => {
+    const { ref: experienceRef, inView: experienceInView } = useInView({
+        triggerOnce: false, // Trigger only once when the section comes into view
+        threshold: 0.6, // Load when 20% of the section is visible
+    });
+
+    const { ref: educationRef, inView: educationInView } = useInView({
+        triggerOnce: false,
+        threshold: 0.6,
+    });
+
     return (
-        <Container sx={{ maxWidth: '1400px !important'}}>
+        <Container sx={{ maxWidth: '1400px !important' }}>
             <Stack direction={"column"} sx={{
 
             }}>
-                <Stack direction={"column"} sx={{ height: '100vh' }} justifyContent={'center'} >
-                <Typography variant="h2" align="center" className="c-black">Creativity Powers Progress</Typography>
-                    <img src="" alt="" />
-                    <Stack>
-                        <Typography variant="h3" className="c-black">Biography</Typography>
-                        <Typography variant="h6" className="c-black">
-                            Hi, I'm Abdul Moiz Khan, a passionate full-stack developer and machine learning enthusiast. 
-                            With a solid background in computer science, I specialize in building robust web applications that 
-                            blend seamless front-end interfaces with powerful back-end functionality. My expertise spans full-stack 
-                            development, front-end design, and machine learning. I excel in creating user-centric digital experiences 
-                            and innovative solutions, constantly seeking to push the boundaries of technology. I'm dedicated to continuous 
-                            learning and thrive in collaborative environments. My goal is to leverage my skills to drive impactful projects 
-                            and advance the field of technology.
-                        </Typography>
-                    </Stack>
+                <Stack direction={"column"} sx={{ height: '100vh' }} justifyContent={'center'} gap={5} >
+                    <Typography variant="h2" align="center" className="color-theme">Creativity Powers Progress</Typography>
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={8}>
+                            <Stack gap={2}>
+                                <Typography variant="h3" className="c-black">Biography</Typography>
+                                <Typography variant="h6" className="c-black">
+                                    Hi, I'm Abdul Moiz Khan, a passionate full-stack developer and machine learning enthusiast.
+                                    With a solid background in computer science, I specialize in building robust web applications that
+                                    blend seamless front-end interfaces with powerful back-end functionality. My expertise spans full-stack
+                                    development, front-end design, and machine learning. I excel in creating user-centric digital experiences
+                                    and innovative solutions, constantly seeking to push the boundaries of technology. I'm dedicated to continuous
+                                    learning and thrive in collaborative environments. My goal is to leverage my skills to drive impactful projects
+                                    and advance the field of technology.
+                                </Typography>
+                            </Stack>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Stack alignContent={"flex-end"}>
+                            <img src={profile} alt="" height={200}  />
+                            </Stack>
+                        </Grid>
+                    </Grid>
                 </Stack>
             </Stack>
             <Divider sx={{ margin: '60px 0px', borderColor: 'white' }}></Divider>
-            <Stack direction={"column"}>
+            <Box>
+            <Stack>
+
+            </Stack>
+            </Box>
+            <Divider sx={{ margin: '60px 0px', borderColor: 'white' }}></Divider>
+            <Stack
+                direction={"column"}
+                ref={experienceRef}
+                className={`fade-in-section ${experienceInView ? 'is-visible' : ''}`}>
                 <Typography variant="h2" align="center" className="c-black">Experience</Typography>
                 <AlternateTimeline timelineData={experienceData} />
             </Stack>
             <Divider sx={{ margin: '60px 0px', borderColor: 'white' }}></Divider>
-            <Stack direction={"column"}>
+            <Stack
+                direction={"column"}
+                ref={educationRef}
+                className={`fade-in-section ${educationInView ? 'is-visible' : ''}`}
+            >
                 <Typography variant="h2" align="center" className="c-black">Education & Certifications</Typography>
                 <AlternateTimeline timelineData={educationData} />
             </Stack>
